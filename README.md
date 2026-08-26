@@ -20,7 +20,7 @@ Each challenge contains:
 
 | # | Challenge      |  Status  |
 |---|----------------|----------|
-| 1 | Unstoppable    | ⏳       |
+| 1 | Unstoppable    | Solved   |
 | 2 | Naive Receiver | ⏳       |
 | 3 | Truster        | ⏳       |
 | 4 | Side Entrance  | ⏳       |
