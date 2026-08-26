@@ -122,12 +122,3 @@ Press enter or click to view image in full size
 
 **3. Use virtual shares :** OpenZeppelin’s ERC-4626 implementation uses virtual shares to prevent this attack
 
-## Resources
-
-- Damn Vulnerable DeFi V4: https://github.com/theredguild/damn-vulnerable-defi
-- Foundry Book: https://book.getfoundry.sh/
-- ERC-4626 Standard: https://eips.ethereum.org/EIPS/eip-4626
-
-**Tags:** solidity ethereum foundry defi security web3 auditing damn-vulnerable-defi
-
-**Note :** If you enjoyed and wanna see more writeups like this give me a clap
