@@ -1,1 +1,84 @@
-# DV-DeFi_solutions
+# Damn Vulnerable DeFi Solutions
+
+A collection of my solutions, writeups, and exploit implementations for the **Damn Vulnerable DeFi (DVDeFi)** challenges.
+
+This repository documents my journey through DeFi security, smart contract exploitation, and offensive security concepts using Foundry.
+
+## About
+
+Damn Vulnerable DeFi is a hands-on Web3 security wargame designed to teach common vulnerabilities found in decentralized finance protocols.
+
+Each challenge contains:
+
+- Vulnerability analysis
+- Exploit development
+- Foundry test implementation
+- Attack walkthrough
+- Key security takeaways
+
+## Challenges
+
+| # | Challenge      |  Status  |
+|---|----------------|----------|
+| 1 | Unstoppable    | ⏳       |
+| 2 | Naive Receiver | ⏳       |
+| 3 | Truster        | ⏳       |
+| 4 | Side Entrance  | ⏳       |
+| 5 | The Rewarder   | ⏳       |
+| 6 | Selfie         | ⏳       |
+| 7 | Compromised    | ⏳       |
+| 8 | Puppet         | ⏳       |
+| 9 | Puppet V2      | ⏳       |
+| 10 | Free Rider    | ⏳       |
+| 11 | Backdoor      | ⏳       |
+| 12 | Climber       | ⏳       |
+| 13 | Wallet Mining | ⏳       |
+| 14 | Puppet V3     | ⏳       |
+| 15 | ABI Smuggling | ⏳       |
+| 16 | Shards        | ⏳       |
+| 17 | Curvy Puppet  | ⏳       |
+| 18 | Withdrawal    | ⏳       |
+
+> Status will be updated as I complete each challenge.
+
+## Repository Structure
+
+```text
+.
+├── unstoppable/
+├── naive-receiver/
+├── truster/
+├── side-entrance/
+├── rewarder/
+├── selfie/
+├── compromised/
+├── puppet/
+├── ...
+└── README.md
+```
+
+## Goals
+
+- Master smart contract exploitation
+- Improve DeFi security knowledge
+- Develop an auditor mindset
+- Practice exploit development with Foundry
+- Build a public record of my security research journey
+
+## Tools
+
+- Solidity
+- Foundry
+- OpenZeppelin
+- EVM
+- DeFi Protocols
+
+## Disclaimer
+
+This repository is intended strictly for educational and security research purposes. All exploits are performed in intentionally vulnerable environments provided by the Damn Vulnerable DeFi challenges.
+
+---
+
+**Author:** [0xscarfac3](https://github.com/0xscarfac3)
+
+*"Learn. Break. Understand. Secure."*
