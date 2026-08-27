@@ -83,6 +83,9 @@ contract NaiveReceiverPool is Multicall, IERC3156FlashLender {
         totalDeposits += amount;
     }
 
+    // @audit-issue : a transaction can be crafted that comes from the trusted frowarder and since I control msg.data,
+    // I can make sure that the last 20 bytes are aby address if account that I wish to control
+    // That way I can impersonate account and perform withdraw function on their behalf
     function _msgSender() internal view override returns (address) {
         if (msg.sender == trustedForwarder && msg.data.length >= 20) {
             return address(bytes20(msg.data[msg.data.length - 20:]));

