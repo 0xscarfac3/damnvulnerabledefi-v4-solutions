@@ -21,7 +21,7 @@ Each challenge contains:
 | # | Challenge      |  Status  |
 |---|----------------|----------|
 | 1 | Unstoppable    | Solved   |
-| 2 | Naive Receiver | ⏳       |
+| 2 | Naive Receiver | Solved   |
 | 3 | Truster        | ⏳       |
 | 4 | Side Entrance  | ⏳       |
 | 5 | The Rewarder   | ⏳       |
