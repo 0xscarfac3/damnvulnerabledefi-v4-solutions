@@ -22,7 +22,7 @@ Each challenge contains:
 |---|----------------|----------|
 | 1 | [Unstoppable](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/unstoppable/README.md)    | Solved   |
 | 2 | [Naive Receiver](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/naive-receiver/README.md) | Solved   |
-| 3 | Truster        | ⏳       |
+| 3 | [Truster](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/truster/README.md)        | solved   |
 | 4 | Side Entrance  | ⏳       |
 | 5 | The Rewarder   | ⏳       |
 | 6 | Selfie         | ⏳       |
