@@ -122,3 +122,5 @@ Press enter or click to view image in full size
 
 **3. Use virtual shares :** OpenZeppelin’s ERC-4626 implementation uses virtual shares to prevent this attack
 
+### If you found this write up ueful give a star to the **[repo](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions)** and don't forget to follow your buddy **[0xscarfac3](https://github.com/0xscarfac3)**
+

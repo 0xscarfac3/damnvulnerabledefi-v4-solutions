@@ -137,3 +137,5 @@ function test_naiveReceiver() public checkSolvedByPlayer {
         forwarder.execute(request, signature);
     }
 ```
+
+If you found this write up ueful give a star to the **[repo](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions)** and don't forget to follow your buddy **[0xscarfac3](https://github.com/0xscarfac3)**
