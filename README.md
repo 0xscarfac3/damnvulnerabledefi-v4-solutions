@@ -21,7 +21,7 @@ Each challenge contains:
 | # | Challenge      |  Status  |
 |---|----------------|----------|
 | 1 | [Unstoppable](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/unstoppable/README.md)    | Solved   |
-| 2 | Naive Receiver | Solved   |
+| 2 | [Naive Receiver](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/naive-receiver/README.md) | Solved   |
 | 3 | Truster        | ⏳       |
 | 4 | Side Entrance  | ⏳       |
 | 5 | The Rewarder   | ⏳       |
