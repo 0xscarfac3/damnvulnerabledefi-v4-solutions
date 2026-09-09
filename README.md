@@ -25,7 +25,7 @@ Each challenge contains:
 | 3 | [Truster](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/truster/README.md)        | solved   |
 | 4 | [Side Entrance](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/side-entrance/README.md)  | solved   |
 | 5 | The Rewarder   | ⏳       |
-| 6 | Selfie         | ⏳       |
+| 6 | [Selfie](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/selfie/README.md)         | solved   |
 | 7 | Compromised    | ⏳       |
 | 8 | Puppet         | ⏳       |
 | 9 | Puppet V2      | ⏳       |

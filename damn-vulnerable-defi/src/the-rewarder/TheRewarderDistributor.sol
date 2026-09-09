@@ -68,6 +68,7 @@ contract TheRewarderDistributor {
         emit NewDistribution(token, batchNumber, newRoot, amount);
     }
 
+    // @audit-issue : One of the most dangerous function ever!
     function clean(IERC20[] calldata tokens) external {
         for (uint256 i = 0; i < tokens.length; i++) {
             IERC20 token = tokens[i];
@@ -87,10 +88,16 @@ contract TheRewarderDistributor {
         for (uint256 i = 0; i < inputClaims.length; i++) {
             inputClaim = inputClaims[i];
 
+            // always 0 but we don't care!
             uint256 wordPosition = inputClaim.batchNumber / 256;
             uint256 bitPosition = inputClaim.batchNumber % 256;
 
+            // @audit-info : The first iteration we enter here since token = 0 and inputTOkens[0] = DVT
+            // @audit-issue : In the second iteration since token & inputToken[1] = DVT, we don't enter here!
             if (token != inputTokens[inputClaim.tokenIndex]) {
+                // @audit-issue : we are able to skip the setClaimed in the first iteration and the following iterations 
+                // as long as we have multiple claims with the same token!!!
+                // The way we avoid the bitmap check and revert here :)
                 if (address(token) != address(0)) {
                     if (!_setClaimed(token, amount, wordPosition, bitsSet)) revert AlreadyClaimed();
                 }
