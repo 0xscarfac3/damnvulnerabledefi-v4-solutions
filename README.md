@@ -27,7 +27,7 @@ Each challenge contains:
 | 5 | The Rewarder   | ⏳       |
 | 6 | [Selfie](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/selfie/README.md)         | solved   |
 | 7 | [Compromised](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/compromised/README.md)    | solved   |
-| 8 | Puppet         | ⏳       |
+| 8 | [Puppet](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/puppet/README.md)      | solved   |
 | 9 | Puppet V2      | ⏳       |
 | 10 | Free Rider    | ⏳       |
 | 11 | Backdoor      | ⏳       |
