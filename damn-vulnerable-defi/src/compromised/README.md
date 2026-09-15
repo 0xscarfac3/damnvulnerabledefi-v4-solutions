@@ -41,7 +41,6 @@ In this system you can sell or buy NFTs. The price updates as per the trusted so
 1) buyOne() : It takes the price of NFT and assigns new NFT to the user
 2) sellOne() : It takes NFT from the user, sends funds to user as per the price of the NFT and burns the NFT taken from the user.
 
-Become a Medium member
 
 ### trustOracle.sol has 2 main functions:
 1) postPrice() : It sets the price of NFT from the _setPrice() .
