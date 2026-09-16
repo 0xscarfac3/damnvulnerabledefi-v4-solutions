@@ -7,13 +7,11 @@ There’s a DVT market opened in an old Uniswap v1 exchange, currently with 10 E
 Pass the challenge by saving all tokens from the lending pool, then depositing them into the designated recovery account. You start with 25 ETH and 1000 DVTs in balance.
 
 #
-#
 
 
 
 # Challenge overview
 
-Press enter or click to view image in full size
 
 [Official site](https://damnvulnerabledefi.xyz/challenges/puppet)  
 I am trying to reduce fluffs and indirect stuffs as much as posible
