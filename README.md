@@ -24,7 +24,7 @@ Each challenge contains:
 | 2 | [Naive Receiver](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/naive-receiver/README.md) | Solved   |
 | 3 | [Truster](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/truster/README.md)        | solved   |
 | 4 | [Side Entrance](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/side-entrance/README.md)  | solved   |
-| 5 | The Rewarder   | ⏳       |
+| 5 | [The Rewarder](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/the-rewarder/README.md)   | solved   |
 | 6 | [Selfie](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/selfie/README.md)         | solved   |
 | 7 | [Compromised](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/compromised/README.md)    | solved   |
 | 8 | [Puppet](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/puppet/README.md)      | solved   |
