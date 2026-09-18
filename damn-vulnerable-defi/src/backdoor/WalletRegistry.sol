@@ -49,6 +49,9 @@ contract WalletRegistry is IProxyCreationCallback, Ownable {
         walletFactory = walletFactoryAddress;
         token = IERC20(tokenAddress);
 
+        //@audit q : do we need some access control here?
+        // answer : No, because constructors are executed only during deployment.
+
         for (uint256 i = 0; i < initialBeneficiaries.length; ++i) {
             unchecked {
                 beneficiaries[initialBeneficiaries[i]] = true;
@@ -82,6 +85,8 @@ contract WalletRegistry is IProxyCreationCallback, Ownable {
         }
 
         // Ensure initial calldata was a call to `Safe::setup`
+        // @audit : Not gone deep in this yet but it smells something bad!
+        // @audit : This is me after diving deep inside this and here is the main vulnerability yoo!
         if (bytes4(initializer[:4]) != Safe.setup.selector) {
             revert InvalidInitialization();
         }
@@ -92,6 +97,8 @@ contract WalletRegistry is IProxyCreationCallback, Ownable {
             revert InvalidThreshold(threshold);
         }
 
+        // @audit-info : I know it is checking enough owners or imposters
+        // but it might be better if dev left comment here
         address[] memory owners = Safe(walletAddress).getOwners();
         if (owners.length != EXPECTED_OWNERS_COUNT) {
             revert InvalidOwnersCount(owners.length);
@@ -121,6 +128,8 @@ contract WalletRegistry is IProxyCreationCallback, Ownable {
         SafeTransferLib.safeTransfer(address(token), walletAddress, PAYMENT_AMOUNT);
     }
 
+    // @audit : where the fuck is natspec, u didn't add natspec in a technical function like this
+    // @audit question : should not there be some access controls? ahh it's private function no worries it can't called externally
     function _getFallbackManager(address payable wallet) private view returns (address) {
         return abi.decode(
             Safe(wallet).getStorageAt(uint256(keccak256("fallback_manager.handler.address")), 0x20), (address)

@@ -109,7 +109,8 @@ contract Safe is
         setupModules(to, data);
 
         if (payment > 0) {
-            // To avoid running into issues with EIP-170 we reuse the handlePayment function (to avoid adjusting code of that has been verified we do not adjust the method itself)
+            // To avoid running into issues with EIP-170 we reuse the handlePayment function
+            // (to avoid adjusting code of that has been verified we do not adjust the method itself)
             // baseGas = 0, gasPrice = 1 and gas = payment => amount = (payment + 0) * 1 = payment
             handlePayment(payment, 0, 1, paymentToken, paymentReceiver);
         }
