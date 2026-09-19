@@ -31,7 +31,7 @@ Each challenge contains:
 | 9 | [Puppet V2](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/puppet-v2/README.md)      | solved   |
 | 10 | [Free Rider](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/free-rider/README.md)    | solved   |
 | 11 | [Backdoor](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/backdoor/README.md)      | solved   |
-| 12 | Climber       | ⏳       |
+| 12 | [Climber](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/climber/README.md)       | solved   |
 | 13 | Wallet Mining | ⏳       |
 | 14 | Puppet V3     | ⏳       |
 | 15 | ABI Smuggling | ⏳       |
