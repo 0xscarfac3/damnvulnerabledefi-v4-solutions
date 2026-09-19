@@ -5,7 +5,8 @@ There’s a secure vault contract guarding 10 million DVT tokens. The vault is u
 The owner of the vault is a timelock contract. It can withdraw a limited amount of tokens every 15 days.
 
 On the vault there’s an additional role with powers to sweep all tokens in case of an emergency.
+(IDK why but am getting some bad smell here)
 
-On the timelock, only an account with a “Proposer” role can schedule actions that can be executed 1 hour later.
+On the timelock, only an account with a “Proposer” role can schedule actions that can be executed 1 hour later.(Here is actions written in plural kinda doubtins stuff right let's see...)
 
 You must rescue all tokens from the vault and deposit them into the designated recovery account.

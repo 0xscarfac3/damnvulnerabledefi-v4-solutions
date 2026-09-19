@@ -51,4 +51,8 @@ abstract contract ClimberTimelockBase is AccessControl {
     }
 
     receive() external payable {}
+
+    // @audit : Here are only getters stuff, If there is no function to transfer fund how can u manipulat it man!
+    // but wrote this comment at last coz if u r watching this u may have completed the review of this contract lol!
+    // Trust me it is worth it to review every code line by line !
 }

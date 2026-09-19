@@ -33,12 +33,14 @@ contract ClimberVault is Initializable, OwnableUpgradeable, UUPSUpgradeable {
 
     function initialize(address admin, address proposer, address sweeper) external initializer {
         // Initialize inheritance chain
+        // Just initializing nothing dangerous below 2 lines
         __Ownable_init(msg.sender);
         __UUPSUpgradeable_init();
 
         // Deploy timelock and transfer ownership to it
         transferOwnership(address(new ClimberTimelock(admin, proposer)));
 
+        // ahh! Initializer can set the Sweeper
         _setSweeper(sweeper);
         _updateLastWithdrawalTimestamp(block.timestamp);
     }
@@ -67,6 +69,7 @@ contract ClimberVault is Initializable, OwnableUpgradeable, UUPSUpgradeable {
         return _sweeper;
     }
 
+    // @question : it is same here coz it is private but the logic implementing it safe?
     function _setSweeper(address newSweeper) private {
         _sweeper = newSweeper;
     }
@@ -80,5 +83,7 @@ contract ClimberVault is Initializable, OwnableUpgradeable, UUPSUpgradeable {
     }
 
     // By marking this internal function with `onlyOwner`, we only allow the owner account to authorize an upgrade
+    // @audit : it is kinda looks safe coz there is an access control modifier only owner can call it
+    // @audit : it is not safe just found it coz we can manipulate the onlyOwner too.....
     function _authorizeUpgrade(address newImplementation) internal override onlyOwner {}
 }
