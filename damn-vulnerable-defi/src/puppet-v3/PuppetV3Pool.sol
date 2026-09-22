@@ -58,6 +58,7 @@ contract PuppetV3Pool {
         return quote * DEPOSIT_FACTOR;
     }
 
+    // @audit-info : Everything is simple and straight forward, here must be the chance to manipulate it 
     function _getOracleQuote(uint128 amount) private view returns (uint256) {
         (int24 arithmeticMeanTick,) = OracleLibrary.consult({pool: address(uniswapV3Pool), secondsAgo: TWAP_PERIOD});
         return OracleLibrary.getQuoteAtTick({

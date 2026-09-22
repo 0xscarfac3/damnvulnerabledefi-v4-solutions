@@ -47,10 +47,10 @@ library OracleLibrary {
     /// @param quoteToken Address of an ERC20 token contract used as the quoteAmount denomination
     /// @return quoteAmount Amount of quoteToken received for baseAmount of baseToken
     function getQuoteAtTick(
-        int24 tick,
-        uint128 baseAmount,
-        address baseToken,
-        address quoteToken
+        int24 tick,// Response of the preivious function(consult)
+        uint128 baseAmount, // The amount user wanna borrow
+        address baseToken,  // The address of the token user is borrowing
+        address quoteToken  // The token user is gonna deposit 3x of the borrowing amount 
     ) internal pure returns (uint256 quoteAmount) {
         uint160 sqrtRatioX96 = TickMath.getSqrtRatioAtTick(tick);
 

