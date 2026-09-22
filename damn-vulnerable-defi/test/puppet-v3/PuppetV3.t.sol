@@ -137,9 +137,8 @@ contract PuppetV3Challenge is Test {
         );
         vm.warp(block.timestamp + 114);
         uint256 quote = lendingPool.calculateDepositOfWETHRequired(LENDING_POOL_INITIAL_TOKEN_BALANCE);
+        
         weth.approve(address(lendingPool), quote);
-        console.log("quote: ", quote);
-
         lendingPool.borrow(1_000_000e18);
 
         (bool pwned,) = address(token).call(
