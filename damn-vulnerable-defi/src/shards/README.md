@@ -19,7 +19,7 @@ You start with no DVTs. Rescue as much funds as you can in a single transaction,
 # Challenge overview
 
 
-[Official site](https://damnvulnerabledefi.xyz/challenges/the-rewarder)  
+[Official site](https://damnvulnerabledefi.xyz/challenges/shards)  
 I am trying to reduce fluffs and indirect stuffs as much as posible
 
 ## Let’s dive
