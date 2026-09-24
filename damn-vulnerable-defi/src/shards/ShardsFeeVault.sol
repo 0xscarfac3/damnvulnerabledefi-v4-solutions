@@ -24,6 +24,7 @@ contract ShardsFeeVault is Initializable, Ownable {
         token = _token;
     }
 
+    // @audit-info : No natspec seriously?
     function deposit(uint256 amount, bool stake) external {
         token.transferFrom(msg.sender, address(this), amount);
         if (address(staking) != address(0) && stake) {
