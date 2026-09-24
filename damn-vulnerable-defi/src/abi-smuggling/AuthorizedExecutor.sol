@@ -38,11 +38,14 @@ abstract contract AuthorizedExecutor is ReentrancyGuard {
         emit Initialized(msg.sender, ids);
     }
 
+
     /**
      * @notice Performs an arbitrary function call on a target contract, if the caller is authorized to do so.
      * @param target account where the action will be executed
      * @param actionData abi-encoded calldata to execute on the target
      */
+
+    // @notice : proper natspec hmm good baby!
     function execute(address target, bytes calldata actionData) external nonReentrant returns (bytes memory) {
         // Read the 4-bytes selector at the beginning of `actionData`
         bytes4 selector;
@@ -52,9 +55,10 @@ abstract contract AuthorizedExecutor is ReentrancyGuard {
         }
 
         if (!permissions[getActionId(selector, msg.sender, target)]) {
-            revert NotAllowed();
+            revert NotAllowed();    
         }
 
+        // @audit-info : kinda fishy no checks for this action 
         _beforeFunctionCall(target, actionData);
 
         return target.functionCall(actionData);
