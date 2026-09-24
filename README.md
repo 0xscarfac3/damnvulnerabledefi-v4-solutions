@@ -35,7 +35,7 @@ Each challenge contains:
 | 13 | Wallet Mining | ⏳       |
 | 14 | [Puppet V3](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/puppet-v3/README.md)     | solved   |
 | 15 | [ABI Smuggling](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/abi-smuggling/README.md) | solved   |
-| 16 | Shards        | ⏳       |
+| 16 | [Shards](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/shards/README.md)        | solved   |
 | 17 | Curvy Puppet  | ⏳       |
 | 18 | Withdrawal    | ⏳       |
 
