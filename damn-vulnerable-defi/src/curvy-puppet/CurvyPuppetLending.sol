@@ -52,6 +52,7 @@ contract CurvyPuppetLending is ReentrancyGuard {
         uint256 remainingCollateralValue = getCollateralValue(remainingCollateral);
         uint256 borrowValue = getBorrowValue(positions[msg.sender].borrowAmount);
 
+        // @audit-info ; I have a doubt here 
         if (borrowValue * 175 > remainingCollateralValue * 100) revert UnhealthyPosition();
 
         positions[msg.sender].collateralAmount = remainingCollateral;

@@ -30,6 +30,7 @@ contract CurvyPuppetOracle is Ownable {
         return price;
     }
 
+    // @audit-critical : If this is safe in this lab, this should not be o=in any production, It is too much centralized
     function setPrice(address asset, uint256 value, uint256 expiration) external onlyOwner {
         if (value == 0) revert InvalidPrice();
         if (expiration <= block.timestamp || expiration > block.timestamp + 2 days) revert InvalidExpiration();
