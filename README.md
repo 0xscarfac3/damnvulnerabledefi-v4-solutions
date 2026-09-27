@@ -1,8 +1,8 @@
-# Damn Vulnerable DeFi Solutions
+# Damn Vulnerable DeFi v4 Solutions
 
-A collection of my solutions, writeups, and exploit implementations for the **Damn Vulnerable DeFi (DVDeFi)** challenges.
+Solutions, writeups, exploit analysis, and Foundry test implementations for Damn Vulnerable DeFi v4.
 
-This repository documents my journey through DeFi security, smart contract exploitation, and offensive security concepts using Foundry.
+Topics covered include flash loans, oracle manipulation, governance attacks, upgradeability, ABI smuggling, access control vulnerabilities, DeFi lending exploits, and smart contract security.
 
 ## About
 
@@ -64,6 +64,19 @@ Each challenge contains:
 - Develop an auditor mindset
 - Practice exploit development with Foundry
 - Build a public record of my security research journey
+
+## Skills Practiced
+
+- Flash loan attacks
+- Oracle manipulation
+- Reentrancy
+- Governance exploits
+- Upgradeable proxy vulnerabilities
+- Signature verification
+- Merkle proof validation
+- ABI smuggling
+- DeFi lending attacks
+- Access control failures
 
 ## Tools
 
