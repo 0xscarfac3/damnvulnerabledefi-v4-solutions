@@ -37,7 +37,7 @@ Each challenge contains:
 | 15 | [ABI Smuggling](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/abi-smuggling/README.md) | solved   |
 | 16 | [Shards](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/shards/README.md)        | solved   |
 | 17 | [Curvy Puppet](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/curvy-puppet/README.md)  | solved   |
-| 18 | Withdrawal    | ⏳       |
+| 18 | [Withdrawal](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/withdrawal/README.md)    | solved   |
 
 > Status will be updated as I complete each challenge.
 
