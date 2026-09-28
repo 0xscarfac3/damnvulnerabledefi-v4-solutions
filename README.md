@@ -32,7 +32,7 @@ Each challenge contains:
 | 10 | [Free Rider](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/free-rider/README.md)    | solved   |
 | 11 | [Backdoor](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/backdoor/README.md)      | solved   |
 | 12 | [Climber](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/climber/README.md)       | solved   |
-| 13 | Wallet Mining | ⏳       |
+| 13 | [Wallet Mining](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/wallet-mining/README.md) | solved   |
 | 14 | [Puppet V3](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/puppet-v3/README.md)     | solved   |
 | 15 | [ABI Smuggling](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/abi-smuggling/README.md) | solved   |
 | 16 | [Shards](https://github.com/0xscarfac3/damnvulnerabledefi-v4-solutions/blob/main/damn-vulnerable-defi/src/shards/README.md)        | solved   |
